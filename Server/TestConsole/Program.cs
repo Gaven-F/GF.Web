@@ -24,6 +24,7 @@ Console.WriteLine("这只是一个测试使用的控制台，代码逻辑测试"
 
 var service = new ServiceCollection();
 
+#region Memory Cacge Service
 service.AddMemoryCache();
 
 var serviceCollection = service.BuildServiceProvider();
@@ -48,6 +49,7 @@ Console.WriteLine(data1);
 Console.WriteLine(data2);
 
 Console.WriteLine(data2!.Equals(data1));
+#endregion
 
 
 
