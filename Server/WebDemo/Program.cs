@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-var builder = WebApplication.CreateBuilder();
+﻿var builder = WebApplication.CreateBuilder();
 
 builder.Services.AddControllers();
 
