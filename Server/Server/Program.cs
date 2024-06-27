@@ -26,6 +26,7 @@ builder.Services.AddOpenApiDocument(
 
 var app = builder.Build();
 
+app.UseHttpsRedirection();
 app.UseRouting();
 app.UseOpenApi(c => { });
 app.UseSwaggerUi(c =>
