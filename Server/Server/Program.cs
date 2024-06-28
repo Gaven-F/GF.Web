@@ -3,24 +3,24 @@ using Server.Commons;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var swaggerOptions = new SwaggerOptions();
-builder.Configuration.Bind(swaggerOptions);
-var o = new AspNetCoreOpenApiDocumentGeneratorSettings();
+var swagger = new SwaggerOptions();
+
+builder.Configuration.GetSection(nameof(SwaggerOptions)).Bind(swagger);
 builder.Services.AddControllers(c => { });
 builder.Services.AddOpenApiDocument(
     (c) =>
     {
         c.PostProcess = p =>
         {
-            p.Info.Title = swaggerOptions.Doc.PostProcess.Title;
-            p.Info.Version = swaggerOptions.Doc.PostProcess.Version;
-            p.Info.Contact = swaggerOptions.Doc.PostProcess.Contact;
-            p.Info.License = swaggerOptions.Doc.PostProcess.License;
+            p.Info.Title = swagger.Doc.PostProcess.Title;
+            p.Info.Version = swagger.Doc.PostProcess.Version;
+            p.Info.Contact = swagger.Doc.PostProcess.SwaggerContact;
+            p.Info.License = swagger.Doc.PostProcess.SwaggerLicense;
         };
-        c.DocumentName = swaggerOptions.Doc.Name;
-        c.Title = swaggerOptions.Doc.Title;
-        c.Description = swaggerOptions.Doc.Description;
-        c.ApiGroupNames = swaggerOptions.Doc.GroupNames;
+        c.DocumentName = swagger.Doc.Name;
+        c.Title = swagger.Doc.Title;
+        c.Description = swagger.Doc.Description;
+        c.ApiGroupNames = swagger.Doc.GroupNames;
     }
 );
 
