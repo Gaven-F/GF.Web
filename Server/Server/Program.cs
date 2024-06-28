@@ -1,26 +1,26 @@
+using NSwag.Generation.AspNetCore;
+using Server.Commons;
+
 var builder = WebApplication.CreateBuilder(args);
 
+var swaggerOptions = new SwaggerOptions();
+builder.Configuration.Bind(swaggerOptions);
+var o = new AspNetCoreOpenApiDocumentGeneratorSettings();
 builder.Services.AddControllers(c => { });
 builder.Services.AddOpenApiDocument(
     (c) =>
     {
         c.PostProcess = p =>
         {
-            p.Info.Title = "GF.Web";
-            p.Info.Version = "¦Á.0.1";
-            p.Info.Contact = new NSwag.OpenApiContact()
-            {
-                Name = "GavenF",
-                Email = "gavenf2023@outlook.com",
-            };
-            //p.Info.License = new NSwag.OpenApiLicense()
-            //{
-            //    Name = "MIT",
-            //};
+            p.Info.Title = swaggerOptions.Doc.PostProcess.Title;
+            p.Info.Version = swaggerOptions.Doc.PostProcess.Version;
+            p.Info.Contact = swaggerOptions.Doc.PostProcess.Contact;
+            p.Info.License = swaggerOptions.Doc.PostProcess.License;
         };
-        c.DocumentName = "Default";
-        c.Title = "GF.Web";
-        c.ApiGroupNames = ["Default"];
+        c.DocumentName = swaggerOptions.Doc.Name;
+        c.Title = swaggerOptions.Doc.Title;
+        c.Description = swaggerOptions.Doc.Description;
+        c.ApiGroupNames = swaggerOptions.Doc.GroupNames;
     }
 );
 
