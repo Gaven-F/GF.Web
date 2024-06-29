@@ -11,10 +11,10 @@
   "SwaggerOptions": {
     "Doc": [
       {
-        ...,
         "Info": {
           ...
-        }
+        },
+        ...
       }
     ],
     "OpenAi": {
