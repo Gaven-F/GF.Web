@@ -6,10 +6,13 @@ builder.EnableController().EnableSwaggerDoc();
 
 var app = builder.Build();
 
-app.UseRouting();
-app.MapControllers();
 app.UseHttpsRedirection();
+app.MapControllers();
+app.UseRouting();
 
-app.USwagger();
+if (app.Environment.IsDevelopment())
+{
+    app.USwagger();
+}
 
 app.Run();
