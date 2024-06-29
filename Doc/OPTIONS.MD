@@ -32,7 +32,7 @@
 **Node Name:** `Doc`
 
 | Key           | Type     | Default Value | Remake         |
-| ------------- | -------- | ------------- | -------------- |
+| :------------ | :------- | :------------ | :------------- |
 | Name          | String   | V1            | 文档名称设置   |
 | ApiGroupNames | String[] | empty/null    | 该文档分组     |
 | Info          | Info     | null          | 该文档其他信息 |
@@ -42,7 +42,7 @@
 **Node Name:** `Info`
 
 | Key            | Type   | Default Value | Remake           |
-| -------------- | ------ | ------------- | ---------------- |
+| :------------- | :----- | :------------ | :--------------- |
 | AuthorName     | String | null          | 文档作者名称     |
 | AuthorUrl      | String | null          | 文档作者首页链接 |
 | AuthorEmail    | String | null          | 文档作者电子邮箱 |
